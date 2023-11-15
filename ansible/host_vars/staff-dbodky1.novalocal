@@ -1,0 +1,3 @@
+---
+icingadb_database_host: localhost
+icingadb_redis_binds: ["10.77.13.132"]

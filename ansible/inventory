@@ -1,0 +1,13 @@
+[icinga:children]
+icinga_master
+
+[icinga_master]
+staff-dbodky1.novalocal 
+staff-dbodky2.novalocal
+
+[mysql]
+staff-dbodky1.novalocal
+
+[rhel]
+staff-dbodky1.novalocal
+staff-dbodk2.novalocal

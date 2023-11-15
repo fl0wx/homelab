@@ -1,0 +1,29 @@
+---
+- name: Configure Icinga Repositories
+  hosts: icinga
+  become: true
+  roles:
+    - role: icinga.icinga.repos
+
+- name: Install MySQL
+  hosts: staff-dbodky1.novalocal
+  become: true
+  roles:
+    - role: geerlingguy.mysql
+  tags: ['mysql']
+
+- name: Install Icinga
+  hosts: icinga_master
+  become: true
+  roles:
+    - role: icinga.icinga.icingadb_redis
+    - role: icinga.icinga.icingadb
+    - role: icinga.icinga.icinga2
+  tags: ['icinga:core']
+
+- name: Install Icingaweb2
+  hosts: icinga_master
+  become: true
+  roles:
+    - role: icinga.icinga.icingaweb2
+  tags: ['icinga:web']

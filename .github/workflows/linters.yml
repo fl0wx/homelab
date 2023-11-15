@@ -1,0 +1,38 @@
+---
+name: Lint Ansible
+'on':
+  pull_request:
+  push:
+    branches:
+      - main
+    paths:
+      - ansible/**
+
+defaults:
+  run:
+    working-directory: ansible
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    name: Lint Ansible code.
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v4.1.1
+    
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v4.7.1
+        with:
+          python-version: '3.12'
+    
+      - name: Install test dependencies.
+        run: |
+          pip3 install -r requirements.txt
+    
+      - name: Run yamllint.
+        run: |
+          yamllint .
+      
+      - name: Run ansible-lint.
+        run: |
+          ansible-lint .

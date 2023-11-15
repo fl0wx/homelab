@@ -1,0 +1,3 @@
+---
+icingadb_database_host: staff-dbodky1.novalocal
+icingadb_redis_binds: ["10.77.13.41"]
